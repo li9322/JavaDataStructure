@@ -23,7 +23,7 @@ public class ArrayStack<E> implements IStack<E>{
 
     @Override
     public E peek() {
-        return array.get(0);
+        return array.getLast();
     }
 
     @Override
@@ -38,5 +38,28 @@ public class ArrayStack<E> implements IStack<E>{
 
     public int getCapacity(){
         return array.getCapacity();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder res=new StringBuilder();
+        res.append("Stack:");
+        res.append("[");
+        for (int i=0;i<array.getSize()-1;i++){
+            res.append(array.get(i)+",");
+        }
+        res.append(array.getLast()+"] top");
+        return res.toString();
+    }
+
+    public static void main(String[] args) {
+        ArrayStack<Integer> stack=new ArrayStack<>();
+        for (int i=0;i<5;i++){
+            stack.push(i);
+            System.out.println(stack);
+        }
+        stack.pop();
+        System.out.println(stack);
+
     }
 }
