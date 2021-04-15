@@ -61,8 +61,11 @@ public class Array<E> {
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("删除位置非法");
         E result = data[index];
-        for (int i = index; i < size; i++)
-            data[i] = data[i + 1];
+//        注意：在极端情况下会发生角标越界，size==capacity
+//        for (int i = index; i < size; i++)
+//            data[i] = data[i + 1];
+        for (int i=index+1;i<size;i++)
+            data[i-1]=data[i];
         size--;
         data[size] = null;
         if (size == data.length / 4 && data.length / 2 != 0)
