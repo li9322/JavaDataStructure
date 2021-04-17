@@ -80,7 +80,7 @@ public class LinkedList_not_DummyHead<E> {
     }
 
     public void add(int index, E e) {
-        if (index < 0 || index > size)
+        if (index < 0 || index >= size)
             throw new IllegalArgumentException("插入位置非法！");
         if (index == 0)
             addFirst(e);

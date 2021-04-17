@@ -1,5 +1,7 @@
 package linkedlist;
 
+import javax.management.NotificationEmitter;
+
 /**
  * @DESCRIPTION:
  * @USER: li
@@ -27,6 +29,7 @@ public class LinkedList<E> {
         public String toString() {
             return e.toString();
         }
+
     }
 
     private Node<E> dummyHead;
@@ -58,12 +61,119 @@ public class LinkedList<E> {
             throw new IllegalArgumentException("插入位置非法！");
 
         Node<E> preNode = dummyHead;
-
         for (int i = 0; i < index; i++)
             preNode = preNode.next;
 
+//        Node<E> node= new Node<>(e);;
+//        node.next=preNode.next;
+//        preNode.next=node;
         preNode.next = new Node(e, preNode.next);
         size++;
     }
 
+    /*public E get(int index){
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("插入位置非法！");
+        Node<E> preNode=dummyHead;
+        for (int i = 0; i<index; i++)
+            preNode=preNode.next;
+        Node<E> node=preNode.next;
+        return node.getE();
+    }*/
+    public E get(int index) {
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("插入位置非法！");
+        Node<E> curNode = dummyHead.next;
+        for (int i = 0; i < index; i++)
+            curNode = curNode.next;
+        return curNode.e;
+    }
+
+    public E getFirst() {
+        return get(0);
+    }
+
+    public E getLast() {
+        return get(size - 1);
+    }
+
+   /* public boolean contains(E e){
+        Node<E> preNode=dummyHead;
+        for (int i=0;i<size;i++){
+            preNode=preNode.next;
+            if (e==preNode.e)
+                return true;
+        }
+        return false;
+    }*/
+   /* public boolean contains(E e){
+        if (isEmpty())
+            return false;
+        Node<E> curNode=dummyHead.next;
+        for (int i=0;i<size;i++){
+            if (e==curNode.e)
+                return true;
+            curNode=curNode.next;
+
+        }
+        return false;
+    }*/
+
+    public boolean contains(E e) {
+        Node<E> curNode = dummyHead.next;
+        while (curNode != null) {
+            if (e.equals(curNode.e))
+                return true;
+            curNode = curNode.next;
+        }
+        return false;
+    }
+
+    public void set(int index, E e) {
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("修改位置非法！");
+        Node<E> curNode = dummyHead.next;
+        for (int i = 0; i < index; i++)
+            curNode = curNode.next;
+        curNode.e = e;
+    }
+
+ /*   @Override
+    public String toString() {
+        StringBuilder res=new StringBuilder();
+        res.append(String.format("LinkedList:size = %d\n", size));
+        res.append("dummyHead ->");
+        Node<E> curNode=dummyHead.next;
+        for (int i=0;i<size;i++){
+            res.append(curNode.e+"->");
+            curNode=curNode.next;
+        }
+        res.append("null");
+        return res.toString();
+    }*/
+
+    @Override
+    public String toString() {
+        StringBuilder res=new StringBuilder();
+
+//        Node<E> curNode=dummyHead.next;
+//        while (curNode!=null){
+//            res.append(curNode.e+"->");
+//            curNode=curNode.next;
+//        }
+        for (Node curNode=dummyHead.next;curNode!=null;curNode=curNode.next)
+            res.append(curNode.e+"->");
+        res.append("null");
+        return res.toString();
+    }
+
+    public static void main(String[] args) {
+        LinkedList<Integer> linkedList=new LinkedList<>();
+        for (int i=0;i<5;i++){
+            linkedList.addFirst(i);
+            System.out.println(linkedList);
+        }
+         linkedList.add(2,33);
+        System.out.println(linkedList);
+    }
 }
