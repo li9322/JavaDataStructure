@@ -1,3 +1,7 @@
+package queue;
+
+import array.Array;
+
 /**
  * @DESCRIPTION:
  * @USER: li
@@ -46,7 +50,7 @@ public class ArrayQueue<E> implements IQueue<E> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("ArrayQueue:");
+        sb.append("queue.ArrayQueue:");
         sb.append("front [");
         for (int i = 0; i < array.getSize(); i++) {
             sb.append(array.get(i));

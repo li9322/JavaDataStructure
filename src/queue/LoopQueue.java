@@ -1,4 +1,6 @@
-import java.util.Objects;
+package queue;
+
+import java.util.Arrays;
 
 /**
  * @DESCRIPTION:
@@ -93,5 +95,17 @@ public class LoopQueue<E> implements IQueue<E> {
         return front == tail;
     }
 
-
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("queue.LoopQueue:");
+        sb.append("front [");
+        for (int i = front; i !=tail; i=(i++)%data.length) {
+            sb.append(data[i]);
+            if (i == (tail- 1))
+                sb.append(", ");
+        }
+        sb.append("] tail");
+        return sb.toString();
+    }
 }

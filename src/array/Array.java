@@ -1,4 +1,4 @@
-
+package array;
 
 /**
  * @DESCRIPTION:
@@ -142,7 +142,7 @@ public class Array<E> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("Array:size = %d ,capacity = %d\n", size, data.length));
+        sb.append(String.format("array.Array:size = %d ,capacity = %d\n", size, data.length));
         sb.append("[");
         for (int i = 0; i < size - 1; i++) {
             sb.append(data[i] + ", ");
