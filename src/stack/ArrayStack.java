@@ -49,10 +49,17 @@ public class ArrayStack<E> implements IStack<E>{
         StringBuilder res=new StringBuilder();
         res.append("Stack:");
         res.append("[");
-        for (int i=0;i<array.getSize()-1;i++){
-            res.append(array.get(i)+",");
+        //错误，当栈为空时size=0
+//        for (int i=0;i<array.getSize()-1;i++){
+//            res.append(array.get(i)+",");
+//        }
+//        res.append(array.getLast()+"] top");
+        for (int i=0;i<array.getSize();i++){
+            res.append(array.get(i));
+            if (i!=array.getSize()-1)
+                res.append(", ");
         }
-        res.append(array.getLast()+"] top");
+        res.append("] top");
         return res.toString();
     }
 
@@ -61,8 +68,9 @@ public class ArrayStack<E> implements IStack<E>{
         for (int i=0;i<5;i++){
             stack.push(i);
             System.out.println(stack);
+//            stack.pop();
         }
-        stack.pop();
+//        stack.pop();
         System.out.println(stack);
 
     }
