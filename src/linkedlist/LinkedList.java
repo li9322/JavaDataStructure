@@ -95,11 +95,12 @@ public class LinkedList<E> {
         Node<E> preNode=dummyHead;
         for (int i=0;i<index;i++)
             preNode=preNode.next;
-        Node<E> curNode=preNode.next;
-        preNode.next=curNode.next;
-        curNode=null;
+        Node<E> delNode =preNode.next;
+        preNode.next=delNode.next;
+//       错误： delNode=null;
+        delNode.next=null;
         size--;
-        return curNode.e;
+        return delNode.e;
     }
 
     public E removeFirst(){
@@ -195,6 +196,12 @@ public class LinkedList<E> {
             System.out.println(linkedList);
         }
          linkedList.add(2,33);
+        System.out.println(linkedList);
+        linkedList.remove(2);
+        System.out.println(linkedList);
+        linkedList.removeFirst();
+        System.out.println(linkedList);
+        linkedList.removeLast();
         System.out.println(linkedList);
     }
 }
