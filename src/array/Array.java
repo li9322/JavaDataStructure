@@ -58,8 +58,11 @@ public class Array<E> {
 
     // 从数组中删除index位置的元素, 返回删除的元素
     public E remove(int index) {
-        if (index < 0 || index >= size)
+        if (index < 0 || index >= size){
+            System.out.println(index);
             throw new IllegalArgumentException("删除位置非法");
+        }
+
         E result = data[index];
 //        注意：在极端情况下会发生角标越界，size==capacity
 //        for (int i = index; i < size; i++)
