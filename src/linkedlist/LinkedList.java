@@ -89,6 +89,27 @@ public class LinkedList<E> {
         return curNode.e;
     }
 
+    public E remove(int index){
+        if (index<0 || index>=size)
+            throw new IllegalArgumentException("删除位置非法");
+        Node<E> preNode=dummyHead;
+        for (int i=0;i<index;i++)
+            preNode=preNode.next;
+        Node<E> curNode=preNode.next;
+        preNode.next=curNode.next;
+        curNode=null;
+        size--;
+        return curNode.e;
+    }
+
+    public E removeFirst(){
+        return remove(0);
+    }
+
+    public E removeLast(){
+        return remove(size-1);
+    }
+
     public E getFirst() {
         return get(0);
     }
