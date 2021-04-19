@@ -11,9 +11,11 @@ public class Test {
     public static void main(String[] args) {
         IQueue<Integer> arrayQueue=new ArrayQueue<>();
         IQueue<Integer> loopQueue=new LoopQueue<>();
-        int count=100000;
+        IQueue<Integer> linkedListQueue=new LinkedListQueue<>();
+        int count=50000;
         getTime(arrayQueue,count);
         getTime(loopQueue,count);
+        getTime(linkedListQueue,count);
     }
     public static void getTime(IQueue queue,int count){
         long startTime=System.nanoTime();
