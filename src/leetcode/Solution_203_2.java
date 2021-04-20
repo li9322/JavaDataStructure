@@ -26,7 +26,7 @@ public class Solution_203_2 {
 //        if (head==null)
 //            return null;
 
-        ListNode prev=dummyHead;
+        ListNode prev=dummyHead ;
         while (prev.next!=null){
             if (prev.next.val==val){
                 prev.next=prev.next.next;
@@ -34,6 +34,6 @@ public class Solution_203_2 {
                 prev=prev.next;
         }
 
-        return  head;
+        return  dummyHead.next;
     }
 }
